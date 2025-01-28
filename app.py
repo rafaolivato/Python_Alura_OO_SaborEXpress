@@ -1,18 +1,17 @@
+from modelos.restaurante import Restaurante
+from modelos.cardapio.prato import Prato
+from modelos.cardapio.bebida import Bebida
 
-from modelos.restaurante import Restaurante 
+restaurante_praca = Restaurante('Restaurante da Praça', 'Prato Feito')
 
-restaurante_praca = Restaurante('Restaurante da Praça','Prato Feito')
+bebida_suco = Bebida('Suco de Laranja', 5.0, '300ml')
+prato_feijoada = Prato('Feijoada', 20.0, 'Feijoada completa com arroz, farofa e couve')
 
-
-
-restaurante_praca.receber_avaliacao('João',5)
-restaurante_praca.receber_avaliacao('Maria',4)
-restaurante_praca.receber_avaliacao('José',3)
-
-restaurante_praca.alternar_status()
+restaurante_praca.adicionar_cardapio(bebida_suco)
+restaurante_praca.adicionar_cardapio(prato_feijoada)
 
 def main():
-    Restaurante.listar_restaurantes()
+    restaurante_praca.exibir_cardapio
 
 if __name__ == '__main__':
     main()

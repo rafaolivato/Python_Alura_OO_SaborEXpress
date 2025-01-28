@@ -1,4 +1,5 @@
 from modelos.avaliacao import Avaliacao
+from modelos.cardapio.item_cardapio import ItemCardapio
 
 class Restaurante:
     restaurantes = []
@@ -8,6 +9,7 @@ class Restaurante:
         self.categoria = categoria.upper()
         self._status = False  # Atributo protegido (privado) --> _status
         self._avaliacao = []  # Atributo protegido (privado) --> _avaliacao
+        self._cardapio = []  # Atributo protegido (privado) --> _cardapio
         Restaurante.restaurantes.append(self)
 
     def __str__(self):  # Método Especial que retorna uma string
@@ -40,6 +42,20 @@ class Restaurante:
         quantidade_notas = len(self._avaliacao)
         media = round(soma_notas / quantidade_notas, 1)
         return media
+    
+    #def adicionar_bebida_cardapio(self, bebida):
+    #    self._cardapio.append(bebida)
 
-# Exemplo de uso
-# Restaurante.listar_restaurantes()  # Isto pode ser chamado depois de adicionar restaurantes à lista
+    #def adicionar_prato_cardapio(self, prato):
+    #    self._cardapio.append(prato)
+
+    def adicionar_cardapio(self,item):
+        if isinstance (item, ItemCardapio):
+            self._cardapio.append(item)
+
+    @property
+    def exibir_cardapio(self):
+        print(f'Cardápio do {self._nome}\n')
+        for i,item in enumerate(self._cardapio,1):
+            mensagem = f'{i}. Nome:{item._nome} | Preço: R${item._preco}'
+            print(mensagem)
