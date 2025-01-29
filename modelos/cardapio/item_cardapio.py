@@ -1,6 +1,12 @@
+from abc import ABC, abstractmethod
+
 class ItemCardapio:
     # Inicializando o atributo de classe `itens_cardapio` como uma lista vazia
     itens_cardapio = []
+
+    @abstractmethod
+    def aplicar_desconto(self, ):
+        pass
 
     def __init__(self, nome, preco):
         self._nome = nome
